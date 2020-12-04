@@ -1,4 +1,8 @@
 .vscode
+renameFiles.py
+analiseTreinamentoVideo.py
+buildListNegative.py
+criaDataSet.py
 ./positivas/
 ./negativas/
 
