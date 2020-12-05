@@ -1,4 +1,4 @@
-"# Trabalho-CG" 
+# Trabalho-CG
 Matheus Pereira Garbossa
 
 O projeto busta uma automação nos registros de funcinario, eles agora poderão ser reconhecidos por uma camera que identificara seus rostos e o crachá, isso pode tirar a necessidade de um porteiro por exemblo, podendo diminuir ainda mais o contato e aproximação durante essa pandemia.
