@@ -3,6 +3,6 @@ renameFiles.py
 analiseTreinamentoVideo.py
 buildListNegative.py
 criaDataSet.py
-./positivas/
-./negativas/
-
+positivas/
+negativas/
+faces/Matheus.jpg

@@ -36,7 +36,7 @@ while True:
     frame = cv2.flip(frame, 1)
     
     HSV = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-    minAmare = np.array([23,255,230])
+    minAmare = np.array([19,203,143])
     maxAmare = np.array([255,255,255])
     maskAmare = cv2.inRange(HSV,minAmare,maxAmare)
     resulAmare = cv2.bitwise_and(frame,frame,mask = maskAmare)
@@ -61,6 +61,7 @@ while True:
         bestMatch = np.argmin(face_distances)
         if matches[bestMatch]:
             name = faces_names[bestMatch]
+            print(name)
 
             for cntA in contornAma:
                 (Ax, Ay, Aw, Ah) = cv2.boundingRect(cntA)
@@ -70,27 +71,14 @@ while True:
                     cv2.drawContours(frame, contornAma, -1, (0, 0, 0), 5)
 
                     hora_atual = datetime.datetime.now()
-                    str_index = str(hora_atual.year) + "/" + str(hora_atual.month) + "/" + str(hora_atual.day) + "_" + str(hora_atual.hour) +  ":" + str(hora_atual.minute) + ":" + str(hora_atual.second)
-                    cv2.imwrite("logs/chegada "+str_index+".jpg", frame,)
+                    str_index = str(hora_atual.year) + "_" + str(hora_atual.month) + "_" + str(hora_atual.day) + "_" + str(hora_atual.hour) +  "_" + str(hora_atual.minute) + "_" + str(hora_atual.second)
+                    print(str_index)
+                    cv2.imwrite("logs/log "+str_index+".jpg", frame)
                     print("Verificado")
-                else:
-                    print("Descohecido")
 
         face_names.append(name)
 
-    for (top, right, bottom, left), name in zip(face_locations, faces_names):
-        top = top * 4
-        right = right * 4
-        bottom = bottom * 4
-        left = left * 4
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-        cv2.rectangle(frame, (left, bottom-35), (right, bottom), (0,0,255), cv2.FILLED)
-        cv2.putText(frame, name, (left+6, bottom-6),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 1)
-
-
-    cv2.imshow('Binariza', threshAma)
-    cv2.imshow('Morph C', threshAmaC)
+    cv2.imshow('Binariza', threshAmaC)
     cv2.imshow('RGBSmall', rgbSmallframe)
     cv2.imshow('Analise', frame)
     k = cv2.waitKey(60)
